@@ -132,3 +132,14 @@ function hsvToRgb(h, s, v){
 
     return [r * 255, g * 255, b * 255];
 }
+
+function rgbToHex(r, g, b) {
+    var hex = "#" + convertToHex(r) + convertToHex(g) + convertToHex(b);
+    return hex;
+}
+
+function convertToHex(c) {
+    c = parseInt(c);
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
