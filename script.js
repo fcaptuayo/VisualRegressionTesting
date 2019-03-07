@@ -7,12 +7,12 @@ function randomPalette(){
     b = generationRandomValue(0, 255);
     console.log("Color: R = ${r} - G = ${g} B = ${b}");
 
-    var HSV = RGBToHSV(r, g, b);
+    var HSV = rgbToHsv(r, g, b);
     var arrayRandomColors = [];
     var interval = 1 / sizeListColors;
   
     for (var i = 0; i < sizeListColors; i++) {
-        hsl[0] = getNextHue(HSV[0], interval);
+        HSV[0] = getNextHue(HSV[0], interval);
         var rgb = hslToRgb(HSV[0], HSV[1], HSV[2]);
         var hex = rgbToHex(rgb[0], rgb[1], rgb[2]).toUpperCase();
         arrayRandomColors.push(hex);
@@ -30,7 +30,7 @@ function generateRules(arrayRandomColors) {
         ".header{ color: ${arrayRandomColors[4]};}"
     ];
     for (var i = 0; i < sizeListColors; i++) {
-        $("#color${i + 1}").css('background-color', arrayRandomColors[i]);
+        $(`#color${i + 1}`).css('background-color', arrayRandomColors[i]);
     }
     $("textarea#css-rules").val(rules.join('\r\n\n'));
 }
@@ -47,9 +47,9 @@ function restart() {
 }
 
 function generationRandomValue(minimum, maximum) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
+    min = Math.ceil(minimum);
+    max = Math.floor(maximum);
+    return Math.floor(Math.random() * (maximum - minimum)) + minimum;
 }
 
 function getNextHue(h, distance) {
