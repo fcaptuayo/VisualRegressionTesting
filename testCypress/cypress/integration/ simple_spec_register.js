@@ -1,0 +1,17 @@
+describe('Los estudiantes login', function() {
+    it('Visits los estudiantes and fails at login', function() {
+      cy.visit('https://losestudiantes.co')
+      cy.contains('Cerrar').click()
+      cy.screenshot()
+      cy.contains('Ingresar').click()
+      cy.get('.cajaSignUp').find('input[name="nombre"]').click().type("Fredy")
+      cy.get('.cajaSignUp').find('input[name="apellido"]').click().type("captuayo")
+      cy.get('.cajaSignUp').find('input[name="correo"]').click().type("captuayonovoafredy@gmail.com")
+      cy.get('.cajaSignUp').find('input[name="password"]').click().type("123456789")
+      cy.get('.cajaSignUp').find('[type="checkbox"]').check()
+      cy.get('.cajaSignUp').find('[name="idPrograma"]').select('20')
+      cy.get('.cajaSignUp').find('input[name="acepta"]').check()
+      cy.get('.cajaSignUp').contains('Registrarse').click()
+      cy.screenshot()
+    })
+})
